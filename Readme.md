@@ -1,66 +1,18 @@
-# Take-Home Test (TypeScript)
+# Notes
 
-This is a template for a take-home test. See the [Instructions][Instructions]
-for details on the activity.
+First of all, I wanted to congratulate the team that put this test together. I really enjoyed the "gotchas", the strategically placed bugs. Some of them:
 
-**Set Up Your Repository**
+- The database being empty with no tables or data;
+- The endpoints not following the REST convention (for example, the create endpoint as a GET)
+- The `ctx.response.body = 200` instead of `ctx.response.status = 200` in some of the endpoints
+- The typos in the environment variables
 
-1. On the top right corner of this page, click the "Use this template" button
-2. Select "Create Your Own Repository" from the dropdown
-3. Give the repository a name under your Github account, and click "Create a new repository"
-4. Follow the below instructions to complete the exercise
+Maybe I missed a few others, but it was fun to deal with them.
 
-**Submit Your Work**
+I tried to be as straight forward as possible according to the instructions, and cut some corners to finish it in a reasonable time. Here's a list of things I'd do with more time.
 
-Once you’ve completed the task, please add the `tracksuit-technical-test` Github user as a collaborator, and share the repo link with the talent manager.
+- Create custom hooks on the client side
+- Better validation
+- Use of controllers in place of adding logic directly to the routers
 
-<!-- Link definitions -->
-
-[DenoInstall]: https://docs.deno.com/runtime/getting_started/installation/
-[Flake]: ./flake.nix
-[Instructions]: ./Instructions.md
-
-## Setup
-
-Install Deno 2 using your preferred method--typically this would be your
-system's package manager. See [Deno's installation instructions][DenoInstall] to
-find the command that's right for you.
-
-<!-- deno-fmt-ignore-start -->
-
-> [!Tip]
-> Nix users can use `nix develop` to install tools declared in this repo's
-> [Flake][] .
-
-<!-- deno-fmt-ignore-end -->
-
-This repo was developed against Deno 2.1.2.
-
-## Common tasks
-
-Most of the commands you'll need are provided by the Deno toolchain. You can run
-tasks either from the repo root or within each package
-
-### Running client and server
-
-```sh
-deno task dev
-```
-
-### Typechecking
-
-```sh
-deno check .
-```
-
-### Linting
-
-```sh
-deno lint
-```
-
-### Formatting
-
-```
-deno fmt
-```
+Thank you so much for your time.
