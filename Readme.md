@@ -15,4 +15,6 @@ I tried to be as straight forward as possible according to the instructions, and
 - Better validation
 - Use of controllers in place of adding logic directly to the routers
 
+There's another list of items needed to make this production ready, which I'm happy to discuss in an interview.
+
 Thank you so much for your time.
