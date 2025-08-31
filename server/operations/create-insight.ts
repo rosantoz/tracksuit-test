@@ -7,12 +7,14 @@ type Input = HasDBClient & {
   text: string;
 };
 
-export default (input: Input): Insight => {
+export default async (input: Input): Promise<Insight> => {
   const createdAt = new Date().toISOString();
 
-  // Insert the insight using parameterized query
-  input.db
-    .sql`INSERT INTO insights (brand, createdAt, text) VALUES (${input.brand}, ${createdAt}, ${input.text})`;
+  // Insert the insight using prepared statement
+  const stmt = input.db
+    .prepare("INSERT INTO insights (brand, createdAt, text) VALUES (?, ?, ?)");
+  
+  const result = stmt.run(input.brand, createdAt, input.text);
 
   // Get the last inserted row to return the complete insight
   const [insertedRow] = input.db
