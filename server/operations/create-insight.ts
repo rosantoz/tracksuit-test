@@ -10,14 +10,9 @@ type Input = HasDBClient & {
 export default (input: Input): Insight => {
   const createdAt = new Date().toISOString();
 
-  const insertData: insightsTable.Insert = {
-    brand: input.brand,
-    createdAt,
-    text: input.text,
-  };
-
-  const insertQuery = insightsTable.insertStatement(insertData);
-  input.db.sql`${insertQuery}`;
+  // Insert the insight using parameterized query
+  const result = input.db
+    .sql`INSERT INTO insights (brand, createdAt, text) VALUES (${input.brand}, ${createdAt}, ${input.text})`;
 
   // Get the last inserted row to return the complete insight
   const [insertedRow] = input.db
