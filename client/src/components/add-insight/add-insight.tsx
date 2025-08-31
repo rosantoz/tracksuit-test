@@ -4,7 +4,9 @@ import { Button } from "../button/button.tsx";
 import { Modal, type ModalProps } from "../modal/modal.tsx";
 import styles from "./add-insight.module.css";
 
-type AddInsightProps = ModalProps;
+type AddInsightProps = ModalProps & {
+  onInsightAdded?: () => void;
+};
 
 export const AddInsight = (props: AddInsightProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -44,6 +46,12 @@ export const AddInsight = (props: AddInsightProps) => {
       if (formRef.current) {
         formRef.current.reset();
       }
+
+      // Call the callback to refresh insights
+      if (props.onInsightAdded) {
+        props.onInsightAdded();
+      }
+
       if (props.onClose) {
         props.onClose();
       }
