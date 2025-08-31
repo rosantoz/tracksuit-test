@@ -4,6 +4,7 @@ import * as oak from "@oak/oak";
 import * as path from "@std/path";
 import { Port } from "../lib/utils/index.ts";
 import createInsight from "./operations/create-insight.ts";
+import deleteInsight from "./operations/delete-insight.ts";
 import listInsights from "./operations/list-insights.ts";
 import lookupInsight from "./operations/lookup-insight.ts";
 
@@ -62,7 +63,10 @@ router.post("/insights", async (ctx) => {
   }
 });
 
-router.get("/insights/delete", (ctx) => {
+router.delete("/insights/:id", (ctx) => {
+  const params = ctx.params as Record<string, any>;
+  deleteInsight({ db, id: params.id });
+  ctx.response.status = 204;
 });
 
 const app = new oak.Application();
