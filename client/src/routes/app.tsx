@@ -1,14 +1,24 @@
 import { useEffect, useState } from "react";
 import { Header } from "../components/header/header.tsx";
 import { Insights } from "../components/insights/insights.tsx";
-import styles from "./app.module.css";
 import type { Insight } from "../schemas/insight.ts";
+import styles from "./app.module.css";
 
 export const App = () => {
-  const [insights, setInsights] = useState<Insight>([]);
+  const [insights, setInsights] = useState<Insight[]>([]);
 
-  useEffect(() => {
-    fetch(`/api/insights`).then((res) => setInsights(res.json()));
+  useEffect(() => { // this could be a separate hook
+    const fetchInsights = async () => {
+      try {
+        const response = await fetch(`/api/insights`);
+        const data = await response.json();
+        setInsights(data);
+      } catch (error) {
+        console.error('Failed to fetch insights:', error);
+      }
+    };
+
+    fetchInsights();
   }, []);
 
   return (
