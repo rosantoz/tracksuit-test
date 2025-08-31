@@ -11,7 +11,7 @@ export default (input: Input): Insight => {
   const createdAt = new Date().toISOString();
 
   // Insert the insight using parameterized query
-  const result = input.db
+  input.db
     .sql`INSERT INTO insights (brand, createdAt, text) VALUES (${input.brand}, ${createdAt}, ${input.text})`;
 
   // Get the last inserted row to return the complete insight
