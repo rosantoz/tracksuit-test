@@ -16,12 +16,12 @@ export const Insights = ({ insights, className }: InsightsProps) => {
       <div className={styles.list}>
         {insights && insights.length > 0
           ? (
-            insights.map(({ id, text, date, brandId }) => (
+            insights.map(({ id, text, createdAt, brandId }) => (
               <div className={styles.insight} key={id}>
                 <div className={styles["insight-meta"]}>
                   <span>Brand {brandId}</span>
                   <div className={styles["insight-meta-details"]}>
-                    <span>{new Date(date).toLocaleDateString()}</span>
+                    <span>{new Date(createdAt).toLocaleDateString()}</span>
                     <Trash2Icon
                       className={styles["insight-delete"]}
                       onClick={deleteInsight}
