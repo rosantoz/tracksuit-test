@@ -17,6 +17,23 @@ export const App = () => {
     }
   };
 
+  const deleteInsight = async (id: number) => {
+    try {
+      const response = await fetch(`/api/insights/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        // Remove the deleted insight from the local state
+        setInsights(prevInsights => prevInsights.filter(insight => insight.id !== id));
+      } else {
+        console.error('Failed to delete insight');
+      }
+    } catch (error) {
+      console.error('Error deleting insight:', error);
+    }
+  };
+
   useEffect(() => { // this could be a separate hook
     fetchInsights();
   }, []);
@@ -24,7 +41,11 @@ export const App = () => {
   return (
     <main className={styles.main}>
       <Header onAddInsight={fetchInsights} />
-      <Insights className={styles.insights} insights={insights} />
+      <Insights
+        className={styles.insights}
+        insights={insights}
+        onDeleteInsight={deleteInsight}
+      />
     </main>
   );
 };

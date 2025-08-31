@@ -43,3 +43,35 @@
   font: var(--text-lg);
   margin: var(--size-4) 0 0;
 }
+
+.deleteModal {
+  padding: var(--size-6);
+  text-align: center;
+}
+
+.deleteModal h3 {
+  font: var(--text-xl);
+  margin: 0 0 var(--size-4);
+  color: var(--color-text);
+}
+
+.deleteModal p {
+  font: var(--text-base);
+  margin: 0 0 var(--size-4);
+  color: var(--color-text-light);
+}
+
+.deleteModalText {
+  font-style: italic;
+  background: var(--color-grey-100);
+  padding: var(--size-3);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--color-grey-300);
+}
+
+.deleteModalActions {
+  display: flex;
+  gap: var(--size-3);
+  justify-content: center;
+  margin-top: var(--size-6);
+}
